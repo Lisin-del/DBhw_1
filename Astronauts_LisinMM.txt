@@ -1,0 +1,85 @@
+id |   name   | gender | ages | military
+----+----------+--------+------+----------
+  1 | Samuel   | m      |   23 |        1
+  2 | Jack     | m      |   47 |        1
+  3 | Amelina  | f      |   32 |        0
+  4 | Thomas   | m      |   27 |        0
+  5 | George   | m      |   58 |        1
+  6 | Emily    | f      |   25 |        1
+  7 | Connor   | m      |   31 |        0
+  8 | Harry    | m      |   47 |        1
+  9 | Joseph   | m      |   43 |        1
+ 10 | Lily     | f      |   36 |        1
+ 11 | Isabella | f      |   29 |        0
+(11 строк)
+
+select t1.name as commander, t2.name as astronaut2, t3.name as civil
+	from astronauts as t1, astronauts as t2, astronauts as t3
+		where t3.military = 0 and t3.gender = 'f' and t2.ages < 35 and t2.gender = 'm' and t1.military = 1 and t1.gender = 'm' and t3.name != t2.name and t2.name != t1.name and t1.name != t3.name
+			or t3.military = 0 and t3.gender = 'm' and t2.ages < 35 and t2.gender = 'f' and t1.military = 1 and t1.gender = 'm' and t3.name != t2.name and t2.name != t1.name and t1.name != t3.name
+				or t3.military = 0 and t3.gender = 'm' and t2.ages < 35 and t2.gender = 'm' and t1.military = 1 and t1.gender = 'f' and t1.ages > t2.ages and t1.ages > t3.ages and t3.name != t2.name and t2.name != t1.name and t1.name != t3.name;
+
+ commander | astronaut2 |  civil
+-----------+------------+----------
+ Samuel    | Amelina    | Thomas
+ Samuel    | Amelina    | Connor
+ Samuel    | Thomas     | Amelina
+ Samuel    | Thomas     | Isabella
+ Samuel    | Emily      | Thomas
+ Samuel    | Emily      | Connor
+ Samuel    | Connor     | Amelina
+ Samuel    | Connor     | Isabella
+ Samuel    | Isabella   | Thomas
+ Samuel    | Isabella   | Connor
+ Jack      | Samuel     | Amelina
+ Jack      | Samuel     | Isabella
+ Jack      | Amelina    | Thomas
+ Jack      | Amelina    | Connor
+ Jack      | Thomas     | Amelina
+ Jack      | Thomas     | Isabella
+ Jack      | Emily      | Thomas
+ Jack      | Emily      | Connor
+ Jack      | Connor     | Amelina
+ Jack      | Connor     | Isabella
+ Jack      | Isabella   | Thomas
+ Jack      | Isabella   | Connor
+ George    | Samuel     | Amelina
+ George    | Samuel     | Isabella
+ George    | Amelina    | Thomas
+ George    | Amelina    | Connor
+ George    | Thomas     | Amelina
+ George    | Thomas     | Isabella
+ George    | Emily      | Thomas
+ George    | Emily      | Connor
+ George    | Connor     | Amelina
+ George    | Connor     | Isabella
+ George    | Isabella   | Thomas
+ George    | Isabella   | Connor
+ Harry     | Samuel     | Amelina
+ Harry     | Samuel     | Isabella
+ Harry     | Amelina    | Thomas
+ Harry     | Amelina    | Connor
+ Harry     | Thomas     | Amelina
+ Harry     | Thomas     | Isabella
+ Harry     | Emily      | Thomas
+ Harry     | Emily      | Connor
+ Harry     | Connor     | Amelina
+ Harry     | Connor     | Isabella
+ Harry     | Isabella   | Thomas
+ Harry     | Isabella   | Connor
+ Joseph    | Samuel     | Amelina
+ Joseph    | Samuel     | Isabella
+ Joseph    | Amelina    | Thomas
+ Joseph    | Amelina    | Connor
+ Joseph    | Thomas     | Amelina
+ Joseph    | Thomas     | Isabella
+ Joseph    | Emily      | Thomas
+ Joseph    | Emily      | Connor
+ Joseph    | Connor     | Amelina
+ Joseph    | Connor     | Isabella
+ Joseph    | Isabella   | Thomas
+ Joseph    | Isabella   | Connor
+ Lily      | Samuel     | Thomas
+ Lily      | Samuel     | Connor
+ Lily      | Thomas     | Connor
+ Lily      | Connor     | Thomas
